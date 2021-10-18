@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const TodoList = () => {
-  const todos = new TodoService().todos();
+  const todos = new TodoService().allTodos();
   return (
     <Container>
       {todos.map((todo) => (
