@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Todo, { TodoProps } from "./Todo";
+import TodoService from "../../../services/TodoService";
+import Todo from "./Todo";
 
 /* TODO: look for a better way to acheive this (Container) */
 const Container = styled.div`
@@ -9,15 +10,16 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 17px 25px 17px 25px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin-top: 25px;
   column-gap: 20px;
 `;
 
-const TodoList = (props: { todos: TodoProps[] }) => {
+const TodoList = () => {
+  const todos = new TodoService().todos();
   return (
     <Container>
-      {props.todos.map((todo) => (
+      {todos.map((todo) => (
         <Todo key={todo.id} {...todo} />
       ))}
     </Container>

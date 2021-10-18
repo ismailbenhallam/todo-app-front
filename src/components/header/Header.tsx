@@ -9,7 +9,6 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 30px 0 80px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.07);
-  z-index: 10;
 `;
 
 export default function Header() {

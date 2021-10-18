@@ -14,7 +14,6 @@ const Aside = styled.aside`
   align-items: center;
   justify-content: flex-start;
   padding-top: 69px;
-  z-index: -1;
 `;
 
 const links = [
