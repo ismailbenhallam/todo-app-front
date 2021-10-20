@@ -59,10 +59,6 @@ export const AddButton = styled(PrioritySelect)`
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center;
-  align-content: center; */
-  /* margin-top: auto;
-  margin-bottom: auto; */
 `;
 
 export const ErrorDiv = styled.div.attrs((props: { visibility: boolean }) => ({

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 140px;
   height: 36px;
   border-radius: 4px;
@@ -11,7 +11,3 @@ const Button = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
-
-export default function LogoutButton() {
-  return <Button>Déconnexion</Button>;
-}

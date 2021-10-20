@@ -1,10 +1,10 @@
-import { SyntheticEvent, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useState } from "react";
 import Todo, {
   TodoPriorities,
   TodoPriority,
   TodoPriorityNames,
-} from "../../../models/Todo";
-import TodoService from "../../../services/TodoService";
+} from "../../../../models/Todo";
+import TodoService from "../../../../services/TodoService";
 import {
   AddButton,
   ButtonsContainer,
@@ -16,22 +16,28 @@ import {
 } from "./NewTodoContainer.style";
 
 const NewTodoContainer = () => {
+  // service
+  const todoService = new TodoService();
+
+  // states
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
     priority: TodoPriority.HIGH,
   });
   const [error, setError] = useState("");
-  const todoService = new TodoService();
 
-  const handleChange = (event: SyntheticEvent) => {
+  // listeners
+  const handleChange = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setError("");
     setInputs((state) => {
       return {
         ...state,
-        [(event.target as HTMLInputElement).name]: (
-          event.target as HTMLInputElement
-        ).value,
+        [event.target.name]: event.target.value,
       };
     });
   };
@@ -39,7 +45,7 @@ const NewTodoContainer = () => {
   const handleSubmit = (event: SyntheticEvent) => {
     let { title, description, priority } = inputs;
     if (!title) {
-      setError("Can u please write a short title ?");
+      setError("Veuillez saisir un titre SVP");
       return;
     }
     setError("");

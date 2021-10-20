@@ -1,23 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import Header from "./components/header/Header";
-import History from "./components/main/history/History";
-import Home from "./components/main/home/Home";
-import Main from "./components/main/Main";
-import Sidebar from "./components/sidebar/Sidebar";
+import Navbar from "./components/header/Navbar/Navbar";
+import Root from "./components/Root";
+import Sidebar from "./components/sidebar/SideBar/Sidebar";
+import { Routes } from "./routes";
 
 function App() {
   return (
     <Router>
-      <Header />
+      <Navbar />
       <Sidebar />
-      <Main>
-        <Switch>
-          <Route path="/history" component={History}></Route>
-          <Route path="/" component={Home}></Route>
-        </Switch>
-      </Main>
+      <Root>
+        <Routes />
+      </Root>
     </Router>
   );
 }

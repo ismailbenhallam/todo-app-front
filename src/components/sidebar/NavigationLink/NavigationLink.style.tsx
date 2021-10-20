@@ -1,8 +1,7 @@
-import { FC } from "react";
-import { NavLink, NavLinkProps } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const DecoratedLink = styled(NavLink)`
+export const NavigationLinkContainer = styled(NavLink)`
   height: 48px;
   width: 100%;
   text-decoration: none;
@@ -31,10 +30,3 @@ const DecoratedLink = styled(NavLink)`
     opacity: 0.83;
   }
 `;
-
-export const NavigationLink: FC<NavLinkProps> = (props) => {
-  console.log("props.to " + props.to);
-  return <DecoratedLink to={props.to} />;
-};
-
-export default DecoratedLink;

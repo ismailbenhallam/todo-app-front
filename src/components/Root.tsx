@@ -6,8 +6,8 @@ const Container = styled.div`
   padding: 0px 10px;
 `;
 
-const Main: FC<any> = (props) => {
+const Root: FC = (props) => {
   return <Container>{props.children}</Container>;
 };
 
-export default Main;
+export default Root;

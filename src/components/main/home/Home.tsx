@@ -1,15 +1,12 @@
-import styled from "styled-components";
-import NewTodoContainer from "./NewTodoContainer";
-import TodoList from "./TodoList";
-
-const Container = styled.div``;
+import NewTodoContainer from "./NewTodo/NewTodoContainer";
+import TodoList from "./TodoList/TodoList";
 
 const Home = () => {
   return (
-    <Container>
+    <div>
       <NewTodoContainer />
       <TodoList />
-    </Container>
+    </div>
   );
 };
 

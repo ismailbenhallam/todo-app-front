@@ -1,34 +1,12 @@
-import { FC } from "react";
 import styled from "styled-components";
-import { TodoPriorityNames } from "../../../models/Todo";
-import { PrioritySelect } from "./NewTodoContainer.style";
-
-export interface TodoProps {
-  id: number;
-  title: string;
-  description: string;
-  priority: TodoPriority;
-  state: TodoState;
-}
-
-export enum TodoPriority {
-  HIGH,
-  NORMAL,
-  LOW,
-}
-
-export enum TodoState {
-  WAITING,
-  DONE,
-  DELETED,
-}
+import { TodoPriority } from "../../../../models/Todo";
 
 const priorityColors = new Map<TodoPriority, string>();
 priorityColors.set(TodoPriority.HIGH, "rgba(235, 81, 78)");
 priorityColors.set(TodoPriority.NORMAL, "rgba(57, 113, 154)");
 priorityColors.set(TodoPriority.LOW, "rgba(235, 188, 67);");
 
-const Div = styled.div`
+export const TodoContainer = styled.div`
   opacity: 0.6;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.18);
   display: grid;
@@ -42,13 +20,32 @@ const Div = styled.div`
   }
 `;
 
-const PriorityAndTitleDiv = styled.div`
+export const PrioritySelect = styled.button`
+  width: 140px;
+  height: 36px;
+  border-radius: 4px;
+  font-family: "Lato";
+  font-size: 14px;
+  cursor: pointer;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  background-color: white;
+  color: grey;
+  border-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+`;
+
+export const PriorityAndTitleDiv = styled.div`
   margin: 8px 0;
 `;
 
-const PrioritySpan = styled.div.attrs((props: { level: TodoPriority }) => ({
-  level: props.level,
-}))`
+export const PrioritySpan = styled.div.attrs(
+  (props: { level: TodoPriority }) => ({
+    level: props.level,
+  })
+)`
   color: white;
   display: inline-block;
   text-align: center;
@@ -65,7 +62,7 @@ const PrioritySpan = styled.div.attrs((props: { level: TodoPriority }) => ({
   margin-right: 15px;
 `;
 
-const TitleSpan = styled.span`
+export const TitleSpan = styled.span`
   font-family: Segoe UI;
   font-weight: 500;
   font-size: 16px;
@@ -73,7 +70,7 @@ const TitleSpan = styled.span`
   color: black;
 `;
 
-const DescriptionDiv = styled.div`
+export const DescriptionDiv = styled.div`
   font-family: Segoe UI;
   font-weight: 400;
   font-size: 15px;
@@ -81,7 +78,7 @@ const DescriptionDiv = styled.div`
   color: #5a5353;
 `;
 
-const ColumnDiv = styled.div`
+export const ColumnDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,7 +86,7 @@ const ColumnDiv = styled.div`
   gap: 10px;
 `;
 
-const DoneButton = styled(PrioritySelect)`
+export const DoneButton = styled(PrioritySelect)`
   max-width: 100%;
   background: rgb(57, 154, 113);
   color: white;
@@ -98,7 +95,7 @@ const DoneButton = styled(PrioritySelect)`
   height: 30px;
 `;
 
-const CancelButton = styled(DoneButton)`
+export const CancelButton = styled(DoneButton)`
   background: transparent;
   border-color: transparent;
   color: #acb7c1;
@@ -108,25 +105,3 @@ const CancelButton = styled(DoneButton)`
   border-color: none;
   box-shadow: unset;
 `;
-
-const Todo: FC<TodoProps> = (props) => {
-  return (
-    <Div data-id={props.id}>
-      <div>
-        <PriorityAndTitleDiv>
-          <PrioritySpan level={props.priority}>
-            {TodoPriorityNames.get(props.priority)}
-          </PrioritySpan>
-          <TitleSpan>{props.title}</TitleSpan>
-        </PriorityAndTitleDiv>
-        <DescriptionDiv>{props.description}</DescriptionDiv>
-      </div>
-      <ColumnDiv>
-        <DoneButton data-target-id={props.id}>Terminer</DoneButton>
-        <CancelButton>Annuler</CancelButton>
-      </ColumnDiv>
-    </Div>
-  );
-};
-
-export default Todo;
