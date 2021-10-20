@@ -1,10 +1,11 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import Todo, {
   TodoPriorities,
   TodoPriority,
   TodoPriorityNames,
 } from "../../../../models/Todo";
-import TodoService from "../../../../services/TodoService";
+import { createTodo } from "../../../../redux/slices";
 import {
   AddButton,
   ButtonsContainer,
@@ -16,8 +17,7 @@ import {
 } from "./NewTodoContainer.style";
 
 const NewTodoContainer = () => {
-  // service
-  const todoService = new TodoService();
+  const dispatch = useDispatch();
 
   // states
   const [inputs, setInputs] = useState({
@@ -52,7 +52,13 @@ const NewTodoContainer = () => {
     setInputs((state) => {
       return { title: "", description: "", priority: state.priority };
     });
-    todoService.saveTodo(new Todo(-1, title, description, +priority));
+    dispatch(createTodo(new Todo(-1, title, description, +priority)));
+    // todoService.saveTodo(new Todo(-1, title, description, +priority));
+    // store.dispatch(
+    //   createTodoAction(
+    //     todoService.saveTodo(new Todo(-1, title, description, +priority))
+    //   )
+    // );
   };
 
   return (
