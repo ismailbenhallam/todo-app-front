@@ -1,23 +1,30 @@
-import { TodosData } from "../data/TodosData";
+import TodoStorage from "../data/TodoStorage";
 import Todo, { TodoState } from "../models/Todo";
 
 export default class TodoService {
+  todoStorage: TodoStorage;
+
+  constructor() {
+    this.todoStorage = new TodoStorage();
+  }
+
   allTodos(): Array<Todo> {
-    let todosString = localStorage.getItem("todos");
-    if (!todosString) {
-      let todos = TodosData;
-      localStorage.setItem("todos", JSON.stringify(todos));
-      return todos;
-    } else {
-      return JSON.parse(todosString);
-    }
+    return this.todoStorage.getTodos();
   }
 
   saveTodo(todo: Todo): Todo {
     let todos = this.allTodos();
-    todo.id = todos.length;
+
+    // Find the unique ID
+    let id = todos.length;
+    let length;
+    do {
+      length = todos.filter((t) => t.id === id).length;
+    } while (length);
+    todo.id = id;
+
     todos.push(todo);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    this.todoStorage.saveTodos(todos);
     return todo;
   }
 

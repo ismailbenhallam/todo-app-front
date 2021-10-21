@@ -39,8 +39,6 @@ const IncompleteTodo: FC<TodoProps> = (props) => {
     dispatch(deleteTodo(+id));
   };
 
-  console.log("props.id", props.id);
-
   return (
     <TodoContainer data-id={props.id}>
       <TodoContent {...props} />
