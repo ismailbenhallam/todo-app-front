@@ -1,24 +1,10 @@
 import styled from "styled-components";
-import { TodoPriority } from "../../../../models/Todo";
+import { TodoPriority } from "../../../../../models/Todo";
 
 const priorityColors = new Map<TodoPriority, string>();
 priorityColors.set(TodoPriority.HIGH, "rgba(235, 81, 78)");
 priorityColors.set(TodoPriority.NORMAL, "rgba(57, 113, 154)");
 priorityColors.set(TodoPriority.LOW, "rgba(235, 188, 67);");
-
-export const TodoContainer = styled.div`
-  opacity: 0.6;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.18);
-  display: grid;
-  grid-template-columns: auto max-content;
-  column-gap: 10px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 4px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
 
 export const PrioritySelect = styled.button`
   width: 140px;
@@ -76,32 +62,4 @@ export const DescriptionDiv = styled.div`
   font-size: 15px;
   line-height: 19px;
   color: #5a5353;
-`;
-
-export const ColumnDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-export const DoneButton = styled(PrioritySelect)`
-  max-width: 100%;
-  background: rgb(57, 154, 113);
-  color: white;
-  border-color: rgb(57, 154, 113);
-  width: 85px;
-  height: 30px;
-`;
-
-export const CancelButton = styled(DoneButton)`
-  background: transparent;
-  border-color: transparent;
-  color: #acb7c1;
-  font-family: Segoe UI;
-  font-size: 14px;
-  line-height: 19px;
-  border-color: none;
-  box-shadow: unset;
 `;

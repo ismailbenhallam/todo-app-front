@@ -1,21 +1,26 @@
+import { FC } from "react";
 import { useSelector } from "react-redux";
+import Todo from "../../../../models/Todo";
 import { RootState } from "../../../../redux/reducers";
-import Todo from "../Todo/Todo";
 import { TodoListContainer } from "./TodoList.style";
 
-const TodoList = () => {
-  const todos = useSelector((state: RootState) => state.todos);
-  // const [todos, setTodos] = useState<TodoModel[]>([]);
+export type TodoListProps = {
+  filterFunction: (todo: Todo) => boolean;
+  todoComponent: FC<any>;
+};
 
-  // store.subscribe(() => {
-  //   setTodos(store.getState().todos);
-  // });
+const TodoList: FC<TodoListProps> = (props) => {
+  const todos = useSelector((state: RootState) => state.todos);
+  const TodoComponent = props.todoComponent;
+  const toDisplayTodos = todos.filter(props.filterFunction);
 
   return (
     <TodoListContainer>
-      {todos.map((todo) => (
-        <Todo key={todo.id} {...todo} />
-      ))}
+      {toDisplayTodos.length ? (
+        toDisplayTodos.map((todo) => <TodoComponent key={todo.id} {...todo} />)
+      ) : (
+        <div>No data</div>
+      )}
     </TodoListContainer>
   );
 };

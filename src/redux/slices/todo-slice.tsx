@@ -20,10 +20,14 @@ const todosSlice = createSlice({
     completeTodo: (state, action: PayloadAction<number>) => {
       state.filter((todo) => todo.id === action.payload)[0].state =
         TodoState.DONE;
+      state.filter((todo) => todo.id === action.payload)[0].completionDate =
+        new Date();
     },
     deleteTodo: (state, action: PayloadAction<number>) => {
       state.filter((todo) => todo.id === action.payload)[0].state =
         TodoState.DELETED;
+      state.filter((todo) => todo.id === action.payload)[0].completionDate =
+        new Date();
     },
   },
 });

@@ -27,7 +27,8 @@ class Todo {
     public title: string,
     public description: string,
     public priority: TodoPriority = TodoPriority.NORMAL,
-    public state: TodoState = TodoState.WAITING
+    public state: TodoState = TodoState.WAITING,
+    public completionDate: Date | undefined | null = null
   ) {}
 }
 

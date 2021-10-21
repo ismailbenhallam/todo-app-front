@@ -1,4 +1,4 @@
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, FC, SyntheticEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import Todo, {
   TodoPriorities,
@@ -14,9 +14,9 @@ import {
   InputText,
   PrioritySelect,
   TextArea,
-} from "./NewTodoContainer.style";
+} from "./NewTodo.style";
 
-const NewTodoContainer = () => {
+const NewTodo: FC = () => {
   const dispatch = useDispatch();
 
   // states
@@ -53,12 +53,6 @@ const NewTodoContainer = () => {
       return { title: "", description: "", priority: state.priority };
     });
     dispatch(createTodo(new Todo(-1, title, description, +priority)));
-    // todoService.saveTodo(new Todo(-1, title, description, +priority));
-    // store.dispatch(
-    //   createTodoAction(
-    //     todoService.saveTodo(new Todo(-1, title, description, +priority))
-    //   )
-    // );
   };
 
   return (
@@ -76,7 +70,7 @@ const NewTodoContainer = () => {
         value={inputs.description}
         onChange={handleChange}
       />
-      <ErrorDiv visibility={!!error}>{error}</ErrorDiv>
+      <ErrorDiv visibility={error}>{error}</ErrorDiv>
       <ButtonsContainer>
         <PrioritySelect name="priority" as="select" onChange={handleChange}>
           {TodoPriorities.map((p) => (
@@ -93,4 +87,4 @@ const NewTodoContainer = () => {
   );
 };
 
-export default NewTodoContainer;
+export default NewTodo;

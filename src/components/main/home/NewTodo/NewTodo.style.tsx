@@ -61,7 +61,7 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const ErrorDiv = styled.div.attrs((props: { visibility: boolean }) => ({
+export const ErrorDiv = styled.div.attrs((props: { visibility: string }) => ({
   visibility: props.visibility,
 }))`
   color: #d63301;
@@ -71,5 +71,6 @@ export const ErrorDiv = styled.div.attrs((props: { visibility: boolean }) => ({
   align-self: center;
   padding: 5px 20px;
   border-radius: 3px;
-  visibility: ${(props) => (props.visibility ? "visible" : "hidden")};
+  visibility: ${(props) =>
+    props.visibility.length > 0 ? "visible" : "hidden"};
 `;

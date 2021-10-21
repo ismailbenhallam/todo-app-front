@@ -4,23 +4,32 @@ import Todo, { TodoPriority, TodoState } from "../models/Todo";
 export const TodosData = [
   new Todo(
     0,
-    "ETDDev, je veux initialiser le projet à l'aide de create-react-app",
-    "text text text text text text text text text text text text text text text text text text text text text text text ",
+    "Une tache importante: términée",
+    "text text text text text text text text text text text text text text text ",
     TodoPriority.HIGH,
-    TodoState.DONE
+    TodoState.DONE,
+    new Date()
   ),
   new Todo(
     1,
-    "ETDDev, je veux initialiser le projet à l'aide de create-react-app",
+    "Une tâche normale: en cours",
     "text text text text text text text text text text text text text text text text text text text text text text text ",
     TodoPriority.NORMAL,
     TodoState.WAITING
   ),
   new Todo(
     2,
-    "ETDDev, je veux initialiser le projet à l'aide de create-react-app",
+    "Une tâche faible: en cours",
     "text text text text text text text text text text text text text text text text text text text text text text text ",
     TodoPriority.LOW,
     TodoState.WAITING
+  ),
+  new Todo(
+    3,
+    "Une tâche normale: supprimée",
+    "text text text text text text text text text text text text text text text text text text text text text text text ",
+    TodoPriority.NORMAL,
+    TodoState.DELETED,
+    new Date()
   ),
 ];
