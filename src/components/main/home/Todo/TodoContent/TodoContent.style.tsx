@@ -27,11 +27,11 @@ export const PriorityAndTitleDiv = styled.div`
   margin: 8px 0;
 `;
 
-export const PrioritySpan = styled.div.attrs(
-  (props: { level: TodoPriority }) => ({
-    level: props.level,
-  })
-)`
+interface IPrioritySpanProps {
+  level: TodoPriority;
+}
+
+export const PrioritySpan = styled.div<IPrioritySpanProps>`
   color: white;
   display: inline-block;
   text-align: center;
@@ -40,8 +40,6 @@ export const PrioritySpan = styled.div.attrs(
   background: ${(props) => priorityColors.get(props.level)};
   border-radius: 7px;
   font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
   font-size: 13px;
   line-height: 15px;
   text-align: center;

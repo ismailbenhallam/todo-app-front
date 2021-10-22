@@ -26,8 +26,6 @@ const History: FC = () => {
   const [activeButton, setActiveButton] = useState("done");
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    console.log(event);
-    console.log(event.target);
     setActiveButton(event.currentTarget.name);
   };
 

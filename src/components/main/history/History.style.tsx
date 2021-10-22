@@ -13,7 +13,7 @@ export const Tabs = styled.div`
 `;
 
 export const Tab = styled.button`
-  color: #37424a;
+  color: #8a9399;
   background: transparent;
   border-color: transparent;
   font-family: Segoe UI;

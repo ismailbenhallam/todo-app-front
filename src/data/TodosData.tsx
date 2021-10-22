@@ -1,7 +1,7 @@
 import Todo, { TodoPriority, TodoState } from "../models/Todo";
 
 // For dev only
-export const TodosData = [
+export const TodosDataz = [
   new Todo(
     0,
     "Une tache importante: términée",

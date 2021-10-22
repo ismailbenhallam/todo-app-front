@@ -8,7 +8,23 @@ export default class TodoStorage {
       todosString = "[]";
     }
     try {
-      return JSON.parse(todosString);
+      let array: any[] = JSON.parse(todosString);
+      const todos: Todo[] = [];
+      array.forEach((item) => {
+        todos.push(
+          new Todo(
+            item.id,
+            item.title,
+            item.description,
+            item.priority,
+            item.state,
+            item.completionDate
+              ? new Date(parseInt(item.completionDate))
+              : undefined
+          )
+        );
+      });
+      return todos;
     } catch (e) {
       console.log("cannot parse the saved TODOs from localStorage : " + e);
       return [];
@@ -16,6 +32,6 @@ export default class TodoStorage {
   }
 
   saveTodos(array: Array<Todo>): void {
-    localStorage.SetItem(TODOS_STORAGE_KEY, JSON.stringify(array));
+    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(array));
   }
 }

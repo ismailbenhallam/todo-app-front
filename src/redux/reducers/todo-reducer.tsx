@@ -1,6 +1,5 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
 import { Reducer } from "redux";
-import { TodosData } from "../../data/TodosData";
 import Todo, { TodoState } from "../../models/Todo";
 import {
   completeTodoAction,
@@ -24,9 +23,9 @@ import {
 //   return state;
 // };
 
-const todosReducer: Reducer<Array<Todo>> = createReducer(
+const todosReducer: Reducer<Array<Todo>> = createReducer<Todo[]>(
   // FIXME: remove TodosData...
-  TodosData,
+  [],
   (builder) => {
     builder.addCase(createTodoAction, (state, action: PayloadAction<Todo>) => {
       const todo = action.payload;
