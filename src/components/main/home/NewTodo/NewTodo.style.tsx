@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.form`
   height: 220px;
   /* TODO: look for a better way to acheive this (This box-shadow config will be repeated in many components) */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -61,9 +61,11 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const ErrorDiv = styled.div.attrs((props: { visibility: string }) => ({
-  visibility: props.visibility,
-}))`
+interface IErrorDivProps {
+  visibility: boolean;
+}
+
+export const ErrorDiv = styled.div<IErrorDivProps>`
   color: #d63301;
   background-color: #ffccba;
   max-width: max-content;
@@ -71,6 +73,5 @@ export const ErrorDiv = styled.div.attrs((props: { visibility: string }) => ({
   align-self: center;
   padding: 5px 20px;
   border-radius: 3px;
-  visibility: ${(props) =>
-    props.visibility.length > 0 ? "visible" : "hidden"};
+  visibility: ${(props) => (props.visibility ? "visible" : "hidden")};
 `;

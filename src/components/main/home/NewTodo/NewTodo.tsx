@@ -1,8 +1,8 @@
-import { ChangeEvent, FC, SyntheticEvent, useState } from "react";
+import { FC } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import Todo, {
   TodoPriorities,
-  TodoPriority,
   TodoPriorityNames,
 } from "../../../../models/Todo";
 import { createTodo } from "../../../../redux/slices";
@@ -18,70 +18,41 @@ import {
 
 const NewTodo: FC = () => {
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  // states
-  const [inputs, setInputs] = useState({
-    title: "",
-    description: "",
-    priority: TodoPriority.HIGH,
-  });
-  const [error, setError] = useState("");
-
-  // listeners
-  const handleChange = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setError("");
-    setInputs((state) => {
-      return {
-        ...state,
-        [event.target.name]: event.target.value,
-      };
-    });
-  };
-
-  const handleSubmit = (event: SyntheticEvent) => {
-    let { title, description, priority } = inputs;
-    if (!title) {
-      setError("Veuillez saisir un titre SVP");
-      return;
-    }
-    setError("");
-    setInputs((state) => {
-      return { title: "", description: "", priority: state.priority };
-    });
-    dispatch(createTodo(new Todo(-1, title, description, +priority)));
+  const onSubmit = (data: any) => {
+    dispatch(
+      createTodo(new Todo(-1, data.title, data.description, +data.priority))
+    );
   };
 
   return (
-    <Container>
+    <Container onSubmit={handleSubmit(onSubmit)}>
       <InputText
-        name="title"
         placeholder="Titre"
-        value={inputs.title}
-        onChange={handleChange}
+        {...register("title", { required: true })}
       />
       <TextArea
-        name="description"
+        {...register("description")}
         placeholder="Description"
         as="textarea"
-        value={inputs.description}
-        onChange={handleChange}
       />
-      <ErrorDiv visibility={error}>{error}</ErrorDiv>
+      <ErrorDiv visibility={errors.title}>
+        "Veuillez saisir un titre SVP"
+      </ErrorDiv>
       <ButtonsContainer>
-        <PrioritySelect name="priority" as="select" onChange={handleChange}>
+        <PrioritySelect as="select" {...register("priority")}>
           {TodoPriorities.map((p) => (
             <option key={p} value={p}>
               {TodoPriorityNames.get(p)}
             </option>
           ))}
         </PrioritySelect>
-        <AddButton as="button" onClick={handleSubmit}>
-          Ajouter
-        </AddButton>
+        <AddButton as="input" type="submit" value="Ajouter" />
       </ButtonsContainer>
     </Container>
   );
