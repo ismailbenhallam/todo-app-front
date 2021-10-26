@@ -11,8 +11,8 @@ const TodoPriorities = [
 ];
 
 const TodoPriorityNames = new Map<TodoPriority, string>();
-TodoPriorityNames.set(TodoPriority.HIGH, "Important");
-TodoPriorityNames.set(TodoPriority.NORMAL, "Normal");
+TodoPriorityNames.set(TodoPriority.HIGH, "Importante");
+TodoPriorityNames.set(TodoPriority.NORMAL, "Normale");
 TodoPriorityNames.set(TodoPriority.LOW, "Faible");
 
 enum TodoState {

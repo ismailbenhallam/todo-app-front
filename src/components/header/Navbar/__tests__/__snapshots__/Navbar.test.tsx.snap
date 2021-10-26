@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should match snapshot 1`] = `
+<nav
+  className="sc-dlfnuX dzXmwp"
+>
+  <img
+    alt="Todo App Logo"
+    className="sc-gsTEea HSbWg"
+    src="logo.webp"
+  />
+  <button
+    className="sc-bdfBQB jPjxVN"
+  >
+    Déconnexion
+  </button>
+</nav>
+`;

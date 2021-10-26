@@ -11,16 +11,20 @@ export type TodoListProps = {
 
 const TodoList: FC<TodoListProps> = (props) => {
   const todos = useSelector((state: RootState) => state.todos);
-  const TodoComponent = props.todoComponent;
   const toDisplayTodos = todos.filter(props.filterFunction);
+  const TodoComponent = props.todoComponent;
 
   return (
-    <TodoListContainer>
-      {toDisplayTodos.length ? (
-        toDisplayTodos.map((todo) => <TodoComponent key={todo.id} {...todo} />)
-      ) : (
-        <div>No data</div>
-      )}
+    <TodoListContainer data-testid="TodoListContainer">
+      {toDisplayTodos.length
+        ? toDisplayTodos.map((todo) => (
+            <TodoComponent
+              key={todo.id}
+              todo={todo}
+              data-testid="TodoComponent"
+            />
+          ))
+        : "No data"}
     </TodoListContainer>
   );
 };

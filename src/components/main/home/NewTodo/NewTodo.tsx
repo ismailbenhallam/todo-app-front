@@ -21,28 +21,37 @@ const NewTodo: FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data: any) => {
+    reset();
     dispatch(
-      createTodo(new Todo(-1, data.title, data.description, +data.priority))
+      createTodo(
+        new Todo(-1, data.title.trim(), data.description.trim(), +data.priority)
+      )
     );
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container data-testid="form" onSubmit={handleSubmit(onSubmit)}>
       <InputText
+        data-testid="title"
         placeholder="Titre"
-        {...register("title", { required: true })}
+        {...register("title", {
+          required: true,
+          validate: (value) => value.trim().length > 0,
+        })}
       />
       <TextArea
+        data-testid="description"
         {...register("description")}
         placeholder="Description"
         as="textarea"
       />
-      <ErrorDiv visibility={errors.title}>
-        "Veuillez saisir un titre SVP"
+      <ErrorDiv data-testid="error" visibility={errors.title}>
+        Veuillez saisir un titre SVP
       </ErrorDiv>
       <ButtonsContainer>
         <PrioritySelect as="select" {...register("priority")}>
@@ -52,7 +61,12 @@ const NewTodo: FC = () => {
             </option>
           ))}
         </PrioritySelect>
-        <AddButton as="input" type="submit" value="Ajouter" />
+        <AddButton
+          data-testid="button"
+          as="input"
+          type="submit"
+          value="Ajouter"
+        />
       </ButtonsContainer>
     </Container>
   );

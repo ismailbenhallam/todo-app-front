@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should match snapshot 1`] = `
+<div>
+  <form
+    className="sc-bdfBQB hyTapZ"
+    data-testid="form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="sc-gsTEea cTQgfU"
+      data-testid="title"
+      name="title"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Titre"
+    />
+    <textarea
+      className="sc-gsTEea sc-dlfnuX cTQgfU bLBrQh"
+      data-testid="description"
+      name="description"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Description"
+    />
+    <div
+      className="sc-gKseQn bwLGZl"
+      data-testid="error"
+    >
+      Veuillez saisir un titre SVP
+    </div>
+    <div
+      className="sc-jSgvzq gyKoCI"
+    >
+      <select
+        className="sc-hKgJUU gChHye"
+        name="priority"
+        onBlur={[Function]}
+        onChange={[Function]}
+      >
+        <option
+          value={0}
+        >
+          Importante
+        </option>
+        <option
+          value={1}
+        >
+          Normale
+        </option>
+        <option
+          value={2}
+        >
+          Faible
+        </option>
+      </select>
+      <input
+        className="sc-hKgJUU sc-eCstlR gChHye czdRiz"
+        data-testid="button"
+        type="submit"
+        value="Ajouter"
+      />
+    </div>
+  </form>
+  <div
+    className="sc-kstqJO cWaaAs"
+    data-testid="TodoListContainer"
+  >
+    No data
+  </div>
+</div>
+`;

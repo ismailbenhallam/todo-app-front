@@ -1,6 +1,6 @@
 import { FC, MouseEvent } from "react";
 import { useDispatch } from "react-redux";
-import { TodoPriority, TodoState } from "../../../../../models/Todo";
+import Todo from "../../../../../models/Todo";
 import { completeTodo, deleteTodo } from "../../../../../redux/slices";
 import TodoContent from "../TodoContent/TodoContent";
 import {
@@ -10,15 +10,7 @@ import {
   TodoContainer,
 } from "./IncompleteTodo.style";
 
-export interface TodoProps {
-  id: number;
-  title: string;
-  description: string;
-  priority: TodoPriority;
-  state: TodoState;
-}
-
-const IncompleteTodo: FC<TodoProps> = (props) => {
+const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
   const dispatch = useDispatch();
 
   const handleDoneClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -40,13 +32,19 @@ const IncompleteTodo: FC<TodoProps> = (props) => {
   };
 
   return (
-    <TodoContainer data-id={props.id}>
-      <TodoContent {...props} />
+    <TodoContainer data-testid="TodoContainer">
+      <TodoContent todo={todo} />
       <ColumnDiv>
-        <DoneButton data-todo-id={props.id} onClick={handleDoneClick}>
+        <DoneButton
+          data-testid="DoneButton"
+          data-todo-id={todo.id}
+          onClick={handleDoneClick}>
           Terminer
         </DoneButton>
-        <CancelButton data-todo-id={props.id} onClick={handleCancelClick}>
+        <CancelButton
+          data-testid="CancelButton"
+          data-todo-id={todo.id}
+          onClick={handleCancelClick}>
           Annuler
         </CancelButton>
       </ColumnDiv>

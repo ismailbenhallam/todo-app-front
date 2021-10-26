@@ -32,6 +32,17 @@ export default class TodoStorage {
   }
 
   saveTodos(array: Array<Todo>): void {
-    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(array));
+    let todos: any[] = [];
+    array.forEach((t) => {
+      todos.push({
+        id: t.id,
+        title: t.title,
+        description: t.description,
+        priority: t.priority,
+        state: t.state,
+        completionDate: t.completionDate,
+      });
+    });
+    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos));
   }
 }

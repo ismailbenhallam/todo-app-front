@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { TodoPriorityNames } from "../../../../../models/Todo";
-import { TodoProps } from "../IncompleteTodo/IncompleteTodo";
+import Todo, { TodoPriorityNames } from "../../../../../models/Todo";
 import {
   DescriptionDiv,
   PriorityAndTitleDiv,
@@ -8,16 +7,18 @@ import {
   TitleSpan,
 } from "./TodoContent.style";
 
-const TodoContent: FC<TodoProps> = (props) => {
+const TodoContent: FC<{ todo: Todo }> = ({ todo }) => {
   return (
     <div>
       <PriorityAndTitleDiv>
-        <PrioritySpan level={props.priority}>
-          {TodoPriorityNames.get(props.priority)}
+        <PrioritySpan data-testid="priority-span" level={todo.priority}>
+          {TodoPriorityNames.get(todo.priority)}
         </PrioritySpan>
-        <TitleSpan>{props.title}</TitleSpan>
+        <TitleSpan data-testid="title-span">{todo.title}</TitleSpan>
       </PriorityAndTitleDiv>
-      <DescriptionDiv>{props.description}</DescriptionDiv>
+      <DescriptionDiv data-testid="description-div">
+        {todo.description}
+      </DescriptionDiv>
     </div>
   );
 };

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`History should match snapshot 1`] = `
+<div
+  className="sc-bqyKOL GsNPv"
+>
+  <div
+    className="sc-crrszt gmEEbj"
+  >
+    <button
+      className="sc-dQoVA hfYaBt active"
+      name="done"
+      onClick={[Function]}
+    >
+      Terminées
+    </button>
+    <button
+      className="sc-dQoVA hfYaBt"
+      name="deleted"
+      onClick={[Function]}
+    >
+      Supprimées
+    </button>
+  </div>
+  <div
+    className="sc-kEjbQP bOzHSf"
+    data-testid="TodoListContainer"
+  >
+    No data
+  </div>
+</div>
+`;

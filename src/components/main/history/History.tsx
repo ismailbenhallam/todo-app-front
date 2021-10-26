@@ -42,7 +42,6 @@ const History: FC = () => {
           </Tab>
         ))}
       </Tabs>
-      {/* as={TodoListContainer} */}
       <TodoList
         todoComponent={CompleteTodo}
         filterFunction={(todo) =>
