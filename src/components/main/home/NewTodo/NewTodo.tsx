@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Todo, {
+import {
   TodoPriorities,
   TodoPriorityNames,
+  TodoState,
 } from "../../../../models/Todo";
 import { createTodo } from "../../../../redux/slices";
 import {
@@ -28,9 +29,13 @@ const NewTodo: FC = () => {
   const onSubmit = (data: any) => {
     reset();
     dispatch(
-      createTodo(
-        new Todo(-1, data.title.trim(), data.description.trim(), +data.priority)
-      )
+      createTodo({
+        id: -1,
+        title: data.title.trim(),
+        description: data.description.trim(),
+        priority: +data.priority,
+        state: TodoState.WAITING,
+      })
     );
   };
 

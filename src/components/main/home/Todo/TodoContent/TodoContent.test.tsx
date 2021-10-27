@@ -5,13 +5,13 @@ import TodoContent from "./TodoContent";
 afterEach(cleanup);
 
 test("TodoContent component", async () => {
-  const todo = new Todo(
-    1,
-    "The best title ever",
-    "a description full of mistakes",
-    TodoPriority.NORMAL,
-    TodoState.WAITING
-  );
+  const todo: Todo = {
+    id: 1,
+    title: "The best title ever",
+    description: "a description full of mistakes",
+    priority: TodoPriority.NORMAL,
+    state: TodoState.WAITING,
+  };
 
   const component = render(<TodoContent todo={todo} />);
 

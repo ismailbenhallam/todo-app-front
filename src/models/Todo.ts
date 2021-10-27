@@ -21,16 +21,14 @@ enum TodoState {
   DELETED,
 }
 
-class Todo {
-  constructor(
-    public id: number,
-    public title: string,
-    public description: string,
-    public priority: TodoPriority = TodoPriority.NORMAL,
-    public state: TodoState = TodoState.WAITING,
-    public completionDate: Date | undefined = undefined
-  ) {}
+interface Todo {
+  id: number;
+  title: string;
+  description: string;
+  priority: TodoPriority;
+  state: TodoState;
+  completionDate?: Date;
 }
 
-export { TodoPriority, TodoPriorities, TodoPriorityNames, TodoState, Todo };
+export { TodoPriority, TodoPriorities, TodoPriorityNames, TodoState };
 export default Todo;

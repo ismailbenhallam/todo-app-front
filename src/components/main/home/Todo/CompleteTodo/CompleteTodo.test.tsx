@@ -5,13 +5,13 @@ import { cleanup, render } from "../../../../../utils/test-utils";
 afterEach(cleanup);
 
 test("CompleteTodo", async () => {
-  const todo = new Todo(
-    45,
-    "a super fantastic title",
-    "and a normal description",
-    TodoPriority.LOW,
-    TodoState.DELETED
-  );
+  const todo: Todo = {
+    id: 45,
+    title: "a super fantastic title",
+    description: "and a normal description",
+    priority: TodoPriority.LOW,
+    state: TodoState.DELETED,
+  };
 
   let component = render(<CompleteTodo todo={todo} />);
   expect(component.queryByTestId("DateContainer")).not.toBeInTheDocument();

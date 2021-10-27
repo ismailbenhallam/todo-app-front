@@ -11,18 +11,16 @@ export default class TodoStorage {
       let array: any[] = JSON.parse(todosString);
       const todos: Todo[] = [];
       array.forEach((item) => {
-        todos.push(
-          new Todo(
-            item.id,
-            item.title,
-            item.description,
-            item.priority,
-            item.state,
-            item.completionDate
-              ? new Date(parseInt(item.completionDate))
-              : undefined
-          )
-        );
+        todos.push({
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          priority: item.priority,
+          state: item.state,
+          completionDate: item.completionDate
+            ? new Date(parseInt(item.completionDate))
+            : undefined,
+        });
       });
       return todos;
     } catch (e) {
