@@ -1,5 +1,5 @@
 import TodoList from ".";
-import TodoService from "../../../../services/TodoService";
+import { TodoClient } from "../../../../services/networking/TodoClient";
 import { cleanup, render } from "../../../../utils/test-utils";
 import CompleteTodo from "../Todo/CompleteTodo";
 
@@ -15,8 +15,8 @@ test("TodoList renders No Data", () => {
   );
 });
 
-test("TodoList", () => {
-  const todos = new TodoService().allTodos();
+test("TodoList", async () => {
+  const todos = await new TodoClient().allTodos();
   let component = render(
     <TodoList todoComponent={CompleteTodo} filterFunction={(todo) => true} />
   );

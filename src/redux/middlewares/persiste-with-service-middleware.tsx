@@ -1,25 +1,27 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { Middleware } from "redux";
 import Todo from "../../models/Todo";
-import TodoService from "../../services/TodoService";
+import { TodoClient } from "../../services/networking/TodoClient";
 import { completeTodo, createTodo, deleteTodo } from "../slices";
 
-const service = new TodoService();
-const persisteWithTodoServiceMiddleware: Middleware =
-  (storeAPI) => (next) => (action: PayloadAction<number | Todo>) => {
+const service = new TodoClient();
+const persisteWithTodoClientMiddleware: Middleware =
+  (storeAPI) =>
+  (next) =>
+  async (action: PayloadAction<number | Todo | null>) => {
     console.log(`dispatching action caught by "persisteWithServiceMiddleware"`);
     switch (action.type) {
       case createTodo.type:
-        action.payload = service.saveTodo(action.payload as Todo);
+        action.payload = await service.saveTodo(action.payload as Todo);
         break;
       case deleteTodo.type:
-        service.deleteTodo(action.payload as number);
+        await service.deleteTodo(action.payload as number);
         break;
       case completeTodo.type:
-        service.completeTodo(action.payload as number);
+        await service.completeTodo(action.payload as number);
         break;
     }
     return next(action);
   };
 
-export default persisteWithTodoServiceMiddleware;
+export default persisteWithTodoClientMiddleware;
