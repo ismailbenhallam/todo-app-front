@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
@@ -8,18 +8,15 @@ import Sidebar from "./components/sidebar/SideBar/Sidebar";
 import store from "./redux/store";
 import { Routes } from "./routes";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <Navbar />
-        <Sidebar />
-        <Root>
-          <Routes />
-        </Root>
-      </Router>
-    </Provider>
-  );
-}
-
+const App: FC = () => (
+  <Provider store={store}>
+    <Router>
+      <Navbar />
+      <Sidebar />
+      <Root>
+        <Routes />
+      </Root>
+    </Router>
+  </Provider>
+);
 export default App;

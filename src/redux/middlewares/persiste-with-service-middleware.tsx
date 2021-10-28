@@ -4,7 +4,7 @@ import Todo from "../../models/Todo";
 import { TodoClient } from "../../services/networking/TodoClient";
 import { completeTodo, createTodo, deleteTodo } from "../slices";
 
-const service = new TodoClient();
+const client = new TodoClient();
 const persisteWithTodoClientMiddleware: Middleware =
   (storeAPI) =>
   (next) =>
@@ -12,13 +12,13 @@ const persisteWithTodoClientMiddleware: Middleware =
     console.log(`dispatching action caught by "persisteWithServiceMiddleware"`);
     switch (action.type) {
       case createTodo.type:
-        action.payload = await service.saveTodo(action.payload as Todo);
+        action.payload = await client.saveTodo(action.payload as Todo);
         break;
       case deleteTodo.type:
-        await service.deleteTodo(action.payload as number);
+        await client.deleteTodo(action.payload as number);
         break;
       case completeTodo.type:
-        await service.completeTodo(action.payload as number);
+        await client.completeTodo(action.payload as number);
         break;
     }
     return next(action);
