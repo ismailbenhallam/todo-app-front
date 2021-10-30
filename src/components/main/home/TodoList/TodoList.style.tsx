@@ -14,3 +14,17 @@ export const TodoListContainer = styled.div`
   /* transition: transform 0.5s ease-in-out;
   transform: scaleY(1); */
 `;
+
+export const EmptyTodoListContainer = styled(TodoListContainer)`
+  /* text-align: center; */
+`;
+
+export const ErrorDiv = styled(EmptyTodoListContainer)`
+  color: red;
+  background-color: pink;
+`;
+
+export const LoadingDiv = styled(ErrorDiv)`
+  color: grey;
+  background-color: white;
+`;

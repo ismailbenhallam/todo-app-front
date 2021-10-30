@@ -13,5 +13,5 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;
-export const getTodos = (state: RootState) => state.todos.data;
+export const getTodosSelector = (state: RootState) => state.todos.data;
 export { useCreateTodo, useFetchTodos, useCompleteTodo, useDeleteTodo };

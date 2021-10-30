@@ -17,7 +17,7 @@ import {
 } from "./NewTodo.style";
 
 const NewTodo: FC = () => {
-  const [, createTodo] = useCreateTodo();
+  const [{ loading }, createTodo] = useCreateTodo();
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ const NewTodo: FC = () => {
     createTodo({
       id: -1,
       title: data.title.trim(),
-      description: data.description.trim(),
+      description: data.description?.trim(),
       priority: +data.priority,
       state: TodoState.WAITING,
     });
@@ -39,16 +39,19 @@ const NewTodo: FC = () => {
   return (
     <Container data-testid="form" onSubmit={handleSubmit(onSubmit)}>
       <InputText
+        loading={loading}
         data-testid="title"
         placeholder="Titre"
         {...register("title", {
           required: true,
+          disabled: loading,
           validate: (value) => value.trim().length > 0,
         })}
       />
       <TextArea
+        loading={loading}
         data-testid="description"
-        {...register("description")}
+        {...(register("description"), { disabled: loading })}
         placeholder="Description"
         as="textarea"
       />
@@ -56,7 +59,10 @@ const NewTodo: FC = () => {
         Veuillez saisir un titre SVP
       </ErrorDiv>
       <ButtonsContainer>
-        <PrioritySelect as="select" {...register("priority")}>
+        <PrioritySelect
+          as="select"
+          loading={loading}
+          {...register("priority", { disabled: loading })}>
           {TodoPriorities.map((p) => (
             <option key={p} value={p}>
               {TodoPriorityNames.get(p)}
@@ -64,6 +70,8 @@ const NewTodo: FC = () => {
           ))}
         </PrioritySelect>
         <AddButton
+          loading={loading}
+          disabled={loading}
           data-testid="button"
           as="input"
           type="submit"

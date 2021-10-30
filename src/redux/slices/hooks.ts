@@ -13,6 +13,7 @@ import {
   deleteTodo,
   deleteTodoSuccess,
   getTodos,
+  getTodosFailure,
   getTodosSuccess,
 } from "./todo-slice";
 
@@ -21,12 +22,13 @@ export const useFetchTodos = () => {
 
   return useAsync(async () => {
     dispatch(getTodos());
-    // try {
-    const todos = await todoClient.allTodos();
-    return dispatch(getTodosSuccess(todos));
-    // } catch (error) {
-    //   return dispatch(getTodosFailure(error));
-    // }
+    try {
+      const todos = await todoClient.allTodos();
+      return dispatch(getTodosSuccess(todos));
+    } catch (error) {
+      dispatch(getTodosFailure(error));
+      throw error;
+    }
   }, [dispatch]);
 };
 
@@ -38,9 +40,10 @@ export const useCreateTodo = () => {
       dispatch(createTodo(todo));
       try {
         const savedTodo = await todoClient.saveTodo(todo);
-        dispatch(createTodoSuccess(savedTodo));
+        return dispatch(createTodoSuccess(savedTodo));
       } catch (error) {
         dispatch(createTodoFailure(error));
+        throw error;
       }
     },
     [dispatch]
@@ -58,6 +61,7 @@ export const useCompleteTodo = () => {
         dispatch(completeTodoSuccess(savedTodo));
       } catch (error) {
         dispatch(completeTodoFailure(error));
+        throw error;
       }
     },
     [dispatch]
@@ -75,6 +79,7 @@ export const useDeleteTodo = () => {
         dispatch(deleteTodoSuccess(savedTodo));
       } catch (error) {
         dispatch(completeTodoFailure(error));
+        throw error;
       }
     },
     [dispatch]

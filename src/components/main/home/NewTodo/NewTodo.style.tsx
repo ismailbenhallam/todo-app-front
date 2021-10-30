@@ -12,7 +12,7 @@ export const Container = styled.form`
   gap: 15px; ;
 `;
 
-export const InputText = styled.input`
+export const InputText = styled.input<{ loading: boolean }>`
   background-color: whitesmoke;
   border: none;
   height: 33px;
@@ -25,6 +25,8 @@ export const InputText = styled.input`
   /* margin-bottom: 10px; */
 
   border-radius: 4px;
+  /* cursor: not-allowed; */
+  cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
 `;
 
 export const TextArea = styled(InputText)`
@@ -32,7 +34,7 @@ export const TextArea = styled(InputText)`
   padding-top: 10px;
 `;
 
-export const PrioritySelect = styled.button`
+export const PrioritySelect = styled.button<{ loading: boolean }>`
   width: 140px;
   height: 36px;
   border-radius: 4px;
@@ -48,12 +50,14 @@ export const PrioritySelect = styled.button`
   color: grey;
   border-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
 `;
 
-export const AddButton = styled(PrioritySelect)`
+export const AddButton = styled(PrioritySelect)<{ loading: boolean }>`
   color: white;
   background: #eb514e;
   border-color: #eb514e;
+  cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
 `;
 
 export const ButtonsContainer = styled.div`

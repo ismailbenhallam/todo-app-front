@@ -1,39 +1,37 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
 import Todo from "../../../../models/Todo";
-import { useFetchTodos } from "../../../../redux/slices";
-import { TodoListContainer } from "./TodoList.style";
+import { getTodosSelector, useFetchTodos } from "../../../../redux/slices";
+import {
+  EmptyTodoListContainer,
+  ErrorDiv,
+  LoadingDiv,
+  TodoListContainer,
+} from "./TodoList.style";
 
 export type TodoListProps = {
   filterFunction: (todo: Todo) => boolean;
   todoComponent: FC<any>;
 };
 
-const TodoList: FC<TodoListProps> = ({ todoComponent }) => {
+const TodoList: FC<TodoListProps> = ({ todoComponent, filterFunction }) => {
   const TodoComponent = todoComponent;
   const state = useFetchTodos();
+  const list = useSelector(getTodosSelector);
 
-  // const toDisplayTodos = todos.filter(props.filterFunction);
-  console.log("_____rhnjr_rk _", state);
+  if (state.loading) return <LoadingDiv>Loading...</LoadingDiv>;
+  if (state.error) return <ErrorDiv>{state.error.message}</ErrorDiv>;
 
-  return (
-    <div>
+  const filteredList = list.filter(filterFunction);
+  if (filteredList.length)
+    return (
       <TodoListContainer data-testid="TodoListContainer">
-        {state.loading && "Loading..."}
-        {state.error && state.error?.message}
-        {state.value &&
-          state.value.payload &&
-          (state.value.payload.length
-            ? state.value.payload.map((t) => (
-                <TodoComponent
-                  key={t.id}
-                  todo={t}
-                  data-testid="TodoComponent"
-                />
-              ))
-            : "No data")}
+        {filteredList.filter(filterFunction).map((t) => (
+          <TodoComponent key={t.id} todo={t} data-testid="TodoComponent" />
+        ))}
       </TodoListContainer>
-    </div>
-  );
+    );
+  return <EmptyTodoListContainer>No data</EmptyTodoListContainer>;
 };
 
 export default TodoList;
