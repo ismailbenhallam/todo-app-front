@@ -1,7 +1,6 @@
 import { FC, MouseEvent } from "react";
-import { useDispatch } from "react-redux";
 import Todo from "../../../../../models/Todo";
-import { completeTodo, deleteTodo } from "../../../../../redux/slices";
+import { useCompleteTodo, useDeleteTodo } from "../../../../../redux/slices";
 import TodoContent from "../TodoContent/TodoContent";
 import {
   CancelButton,
@@ -11,7 +10,8 @@ import {
 } from "./IncompleteTodo.style";
 
 const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
-  const dispatch = useDispatch();
+  const [, completeTodo] = useCompleteTodo();
+  const [, deleteTodo] = useDeleteTodo();
 
   const handleDoneClick = (event: MouseEvent<HTMLButtonElement>) => {
     const id = event.currentTarget.dataset["todoId"];
@@ -19,7 +19,7 @@ const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
       console.log("The todo id to mark as complete is undefined");
       return;
     }
-    dispatch(completeTodo(+id));
+    completeTodo(+id);
   };
 
   const handleCancelClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -28,7 +28,7 @@ const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
       console.log("The todo id to delete is undefined");
       return;
     }
-    dispatch(deleteTodo(+id));
+    deleteTodo(+id);
   };
 
   return (

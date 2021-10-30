@@ -25,7 +25,7 @@ test("Init NewTodo", () => {
   expect(error).toHaveTextContent("Veuillez saisir un titre SVP");
 });
 
-test("Click button in NewTodo", async () => {
+test("Click button in NewTodo without providing a title", async () => {
   fireEvent.submit(button);
   await waitFor(() => {
     expect(title).toHaveTextContent("");
@@ -33,4 +33,16 @@ test("Click button in NewTodo", async () => {
     expect(error).toHaveStyle({ visibility: "visible" });
     expect(error).toHaveTextContent("Veuillez saisir un titre SVP");
   });
+});
+
+test("Click button in NewTodo", async () => {
+  // FIXME:
+  title.innerText = "DD";
+  fireEvent.submit(button);
+  // await waitFor(() => {
+  //   expect(title).toHaveTextContent("DD");
+  //   expect(description).toHaveTextContent("");
+  //   expect(error).toHaveStyle({ visibility: "hidden" });
+  //   expect(error).toHaveTextContent("Veuillez saisir un titre SVP");
+  // });
 });

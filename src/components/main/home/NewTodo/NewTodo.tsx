@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import {
   TodoPriorities,
   TodoPriorityNames,
   TodoState,
 } from "../../../../models/Todo";
-import { createTodo } from "../../../../redux/slices";
+import { useCreateTodo } from "../../../../redux/slices";
 import {
   AddButton,
   ButtonsContainer,
@@ -18,7 +17,7 @@ import {
 } from "./NewTodo.style";
 
 const NewTodo: FC = () => {
-  const dispatch = useDispatch();
+  const [, createTodo] = useCreateTodo();
   const {
     register,
     handleSubmit,
@@ -28,15 +27,13 @@ const NewTodo: FC = () => {
 
   const onSubmit = (data: any) => {
     reset();
-    dispatch(
-      createTodo({
-        id: -1,
-        title: data.title.trim(),
-        description: data.description.trim(),
-        priority: +data.priority,
-        state: TodoState.WAITING,
-      })
-    );
+    createTodo({
+      id: -1,
+      title: data.title.trim(),
+      description: data.description.trim(),
+      priority: +data.priority,
+      state: TodoState.WAITING,
+    });
   };
 
   return (

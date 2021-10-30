@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
 import Todo from "../../../../models/Todo";
-import { RootState } from "../../../../redux/reducers";
+import { useFetchTodos } from "../../../../redux/slices";
 import { TodoListContainer } from "./TodoList.style";
 
 export type TodoListProps = {
@@ -9,23 +8,31 @@ export type TodoListProps = {
   todoComponent: FC<any>;
 };
 
-const TodoList: FC<TodoListProps> = (props) => {
-  const todos = useSelector((state: RootState) => state.todos);
-  const toDisplayTodos = todos.filter(props.filterFunction);
-  const TodoComponent = props.todoComponent;
+const TodoList: FC<TodoListProps> = ({ todoComponent }) => {
+  const TodoComponent = todoComponent;
+  const state = useFetchTodos();
+
+  // const toDisplayTodos = todos.filter(props.filterFunction);
+  console.log("_____rhnjr_rk _", state);
 
   return (
-    <TodoListContainer data-testid="TodoListContainer">
-      {toDisplayTodos.length
-        ? toDisplayTodos.map((todo) => (
-            <TodoComponent
-              key={todo.id}
-              todo={todo}
-              data-testid="TodoComponent"
-            />
-          ))
-        : "No data"}
-    </TodoListContainer>
+    <div>
+      <TodoListContainer data-testid="TodoListContainer">
+        {state.loading && "Loading..."}
+        {state.error && state.error?.message}
+        {state.value &&
+          state.value.payload &&
+          (state.value.payload.length
+            ? state.value.payload.map((t) => (
+                <TodoComponent
+                  key={t.id}
+                  todo={t}
+                  data-testid="TodoComponent"
+                />
+              ))
+            : "No data")}
+      </TodoListContainer>
+    </div>
   );
 };
 

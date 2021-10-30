@@ -1,13 +1,12 @@
 import axios from "axios";
-import { BASE_URL } from "../../config/api_config";
 
 const DEFAULT_HEADERS = {
   Accept: "application/json",
 };
 
-export default class Client {
-  get = (relativeUrl: string, headers?: { [headerName: string]: string }) => {
-    return axios.get(BASE_URL + relativeUrl, {
+class Client {
+  get = (url: string, headers?: { [headerName: string]: string }) => {
+    return axios.get(url, {
       headers: {
         ...DEFAULT_HEADERS,
         ...headers,
@@ -16,11 +15,11 @@ export default class Client {
   };
 
   post = (
-    relativeUrl: string,
+    url: string,
     body: any,
     headers?: { [headerName: string]: string }
   ) => {
-    return axios.post(BASE_URL + relativeUrl, body, {
+    return axios.post(url, body, {
       headers: {
         ...DEFAULT_HEADERS,
         ...headers,
@@ -28,11 +27,8 @@ export default class Client {
     });
   };
 
-  delete = (
-    relativeUrl: string,
-    headers?: { [headerName: string]: string }
-  ) => {
-    return axios.delete(BASE_URL + relativeUrl, {
+  delete = (url: string, headers?: { [headerName: string]: string }) => {
+    return axios.delete(url, {
       headers: {
         ...DEFAULT_HEADERS,
         ...headers,
@@ -41,11 +37,11 @@ export default class Client {
   };
 
   patch = (
-    relativeUrl: string,
+    url: string,
     data?: any,
     headers?: { [headerName: string]: string }
   ) => {
-    return axios.patch(BASE_URL + relativeUrl, data, {
+    return axios.patch(url, data, {
       headers: {
         ...DEFAULT_HEADERS,
         ...headers,
@@ -53,3 +49,6 @@ export default class Client {
     });
   };
 }
+
+export const client = new Client();
+export default client;
