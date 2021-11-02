@@ -3,8 +3,8 @@ import History from "./components/main/history/History";
 import Home from "./components/main/home/Home";
 
 export const PATHS: { [key: string]: { name: string; path: string } } = {
-  HOME: { name: "Accueil", path: "/" },
-  HISTORY: { name: "Historique", path: "/history" },
+  home: { name: "Accueil", path: "/" },
+  history: { name: "Historique", path: "/history" },
 };
 
 export const Routes = () => {

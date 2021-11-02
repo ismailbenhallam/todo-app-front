@@ -10,10 +10,10 @@ const TodoPriorities = [
   TodoPriority.LOW,
 ];
 
-const TodoPriorityNames = new Map<TodoPriority, string>();
-TodoPriorityNames.set(TodoPriority.HIGH, "Importante");
-TodoPriorityNames.set(TodoPriority.NORMAL, "Normale");
-TodoPriorityNames.set(TodoPriority.LOW, "Faible");
+const TodoPriorityNameKeys = new Map<TodoPriority, string>();
+TodoPriorityNameKeys.set(TodoPriority.HIGH, "todo.priorities.high");
+TodoPriorityNameKeys.set(TodoPriority.NORMAL, "todo.priorities.normal");
+TodoPriorityNameKeys.set(TodoPriority.LOW, "todo.priorities.low");
 
 enum TodoState {
   WAITING,
@@ -30,5 +30,5 @@ interface Todo {
   completionDate?: Date;
 }
 
-export { TodoPriority, TodoPriorities, TodoPriorityNames, TodoState };
+export { TodoPriority, TodoPriorities, TodoPriorityNameKeys, TodoState };
 export default Todo;

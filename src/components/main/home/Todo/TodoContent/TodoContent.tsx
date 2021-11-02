@@ -1,5 +1,6 @@
 import { FC } from "react";
-import Todo, { TodoPriorityNames } from "../../../../../models/Todo";
+import { FormattedMessage } from "react-intl";
+import Todo, { TodoPriorityNameKeys } from "../../../../../models/Todo";
 import {
   DescriptionDiv,
   PriorityAndTitleDiv,
@@ -12,7 +13,7 @@ const TodoContent: FC<{ todo: Todo }> = ({ todo }) => {
     <div>
       <PriorityAndTitleDiv>
         <PrioritySpan data-testid="priority-span" level={todo.priority}>
-          {TodoPriorityNames.get(todo.priority)}
+          <FormattedMessage id={TodoPriorityNameKeys.get(todo.priority)} />
         </PrioritySpan>
         <TitleSpan data-testid="title-span">{todo.title}</TitleSpan>
       </PriorityAndTitleDiv>

@@ -1,4 +1,5 @@
 import { FC, MouseEvent } from "react";
+import { FormattedMessage } from "react-intl";
 import Todo from "../../../../../models/Todo";
 import { useCompleteTodo, useDeleteTodo } from "../../../../../redux/slices";
 import TodoContent from "../TodoContent/TodoContent";
@@ -39,13 +40,13 @@ const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
           data-testid="DoneButton"
           data-todo-id={todo.id}
           onClick={handleDoneClick}>
-          Terminer
+          <FormattedMessage id="todoList.buttons.done" />
         </DoneButton>
         <CancelButton
           data-testid="CancelButton"
           data-todo-id={todo.id}
           onClick={handleCancelClick}>
-          Annuler
+          <FormattedMessage id="todoList.buttons.delete" />
         </CancelButton>
       </ColumnDiv>
     </TodoContainer>

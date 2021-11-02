@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import Todo from "../../../../models/Todo";
 import { getTodosSelector, useFetchTodos } from "../../../../redux/slices";
@@ -31,7 +32,11 @@ const TodoList: FC<TodoListProps> = ({ todoComponent, filterFunction }) => {
         ))}
       </TodoListContainer>
     );
-  return <EmptyTodoListContainer>No data</EmptyTodoListContainer>;
+  return (
+    <EmptyTodoListContainer>
+      <FormattedMessage id="todoList.nodata" />
+    </EmptyTodoListContainer>
+  );
 };
 
 export default TodoList;

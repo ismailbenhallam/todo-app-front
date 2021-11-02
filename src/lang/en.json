@@ -1,0 +1,17 @@
+{
+  "buttons.logout": "Logout",
+  "links.home": "Home",
+  "links.history": "History",
+  "newTodo.title.placeholder": "Title",
+  "newTodo.description.placeholder": "Description",
+  "newTodo.addButton": "Add",
+  "newTodo.errors.emptyTitle": "Please enter a title",
+  "todo.priorities.high": "High",
+  "todo.priorities.normal": "Normal",
+  "todo.priorities.low": "Low",
+  "todoList.buttons.done": "Complete",
+  "todoList.buttons.delete": "Cancel",
+  "todoList.nodata": "No data",
+  "history.tabs.done": "Completed",
+  "history.tabs.deleted": "Deleted"
+}

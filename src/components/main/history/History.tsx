@@ -1,4 +1,5 @@
 import { FC, MouseEvent, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { TodoState } from "../../../models/Todo";
 import CompleteTodo from "../home/Todo/CompleteTodo";
 import TodoList from "../home/TodoList";
@@ -6,18 +7,18 @@ import { HistoryContainer, Tab, Tabs } from "./History.style";
 
 interface TabsType {
   [key: string]: {
-    name: string;
+    key: string;
     filterFunctionState: TodoState;
   };
 }
 
 const TABS: TabsType = {
   done: {
-    name: "Terminées",
+    key: "history.tabs.done",
     filterFunctionState: TodoState.DONE,
   },
   deleted: {
-    name: "Supprimées",
+    key: "history.tabs.deleted",
     filterFunctionState: TodoState.DELETED,
   },
 };
@@ -38,7 +39,7 @@ const History: FC = () => {
             onClick={handleClick}
             name={entry[0]}
             className={activeButton === entry[0] ? "active" : ""}>
-            {entry[1].name}
+            <FormattedMessage id={entry[1].key} />
           </Tab>
         ))}
       </Tabs>

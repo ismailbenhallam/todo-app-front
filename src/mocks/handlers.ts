@@ -23,7 +23,6 @@ export const TODO_BASE_URL = "http://localhost:3000";
 
 export const handlers = [
   rest.get(TODO_BASE_URL + "/todos", (req, res, ctx) => {
-    console.log("INTERCEPTEEEEEEEEEEED");
     return res(
       ctx.status(200),
       // ctx.delay(1500),
@@ -33,7 +32,6 @@ export const handlers = [
   }),
 
   rest.post(TODO_BASE_URL + "/todos", (req, res, ctx) => {
-    console.log("INTERCEPTEEEEEEEEEEED");
     let todo = req.body as Todo;
     todo.id = TODOS.length;
     TODOS.push(req.body as Todo);
@@ -46,7 +44,6 @@ export const handlers = [
   }),
 
   rest.delete(TODO_BASE_URL + "/todo/:id", (req, res, ctx) => {
-    console.log("INTERCEPTEEEEEEEEEEED");
     let { id } = req.params;
     let toDelete = TODOS.filter((todo) => todo.id === Number.parseInt(id));
     if (!toDelete.length) {
@@ -68,11 +65,9 @@ export const handlers = [
   }),
 
   rest.patch(TODO_BASE_URL + "/todo/:id", (req, res, ctx) => {
-    console.log("INTERCEPTEEEEEEEEEEED");
     let { id } = req.params;
     let toComplete = TODOS.filter((todo) => todo.id === Number.parseInt(id));
     if (!toComplete.length) {
-      console.log(id);
       console.log("Empty array");
       return res(
         ctx.status(404)

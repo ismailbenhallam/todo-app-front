@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { useIntl } from "react-intl";
 import {
   TodoPriorities,
-  TodoPriorityNames,
+  TodoPriorityNameKeys,
   TodoState,
 } from "../../../../models/Todo";
 import { useCreateTodo } from "../../../../redux/slices";
@@ -25,6 +26,8 @@ const NewTodo: FC = () => {
     formState: { errors },
   } = useForm();
 
+  const intl = useIntl();
+
   const onSubmit = (data: any) => {
     reset();
     createTodo({
@@ -41,7 +44,7 @@ const NewTodo: FC = () => {
       <InputText
         loading={loading}
         data-testid="title"
-        placeholder="Titre"
+        placeholder={intl.formatMessage({ id: "newTodo.title.placeholder" })}
         {...register("title", {
           required: true,
           disabled: loading,
@@ -52,7 +55,9 @@ const NewTodo: FC = () => {
         loading={loading}
         data-testid="description"
         {...(register("description"), { disabled: loading })}
-        placeholder="Description"
+        placeholder={intl.formatMessage({
+          id: "newTodo.description.placeholder",
+        })}
         as="textarea"
       />
       <ErrorDiv data-testid="error" visibility={errors.title}>
@@ -65,7 +70,7 @@ const NewTodo: FC = () => {
           {...register("priority", { disabled: loading })}>
           {TodoPriorities.map((p) => (
             <option key={p} value={p}>
-              {TodoPriorityNames.get(p)}
+              {intl.formatMessage({ id: TodoPriorityNameKeys.get(p) })}
             </option>
           ))}
         </PrioritySelect>
@@ -75,7 +80,7 @@ const NewTodo: FC = () => {
           data-testid="button"
           as="input"
           type="submit"
-          value="Ajouter"
+          value={intl.formatMessage({ id: "newTodo.addButton" })}
         />
       </ButtonsContainer>
     </Container>

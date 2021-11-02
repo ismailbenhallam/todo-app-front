@@ -1,0 +1,17 @@
+{
+  "buttons.logout": "Déconnexion",
+  "links.home": "Accueil",
+  "links.history": "Historique",
+  "newTodo.title.placeholder": "Titre",
+  "newTodo.description.placeholder": "Description",
+  "newTodo.addButton": "Ajouter",
+  "newTodo.errors.emptyTitle": "Veuillez saisir un titre SVP",
+  "todo.priorities.high": "Importante",
+  "todo.priorities.normal": "Normale",
+  "todo.priorities.low": "Faible",
+  "todoList.buttons.done": "Terminer",
+  "todoList.buttons.delete": "Annuler",
+  "todoList.nodata": "Aucune donnée",
+  "history.tabs.done": "Terminées",
+  "history.tabs.deleted": "Supprimées"
+}

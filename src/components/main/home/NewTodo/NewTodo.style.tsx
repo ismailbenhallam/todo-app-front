@@ -25,8 +25,8 @@ export const InputText = styled.input<{ loading: boolean }>`
   /* margin-bottom: 10px; */
 
   border-radius: 4px;
-  /* cursor: not-allowed; */
   cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
+  pointer-events: ${(props) => (props.loading ? "none" : "unset")};
 `;
 
 export const TextArea = styled(InputText)`
@@ -51,6 +51,7 @@ export const PrioritySelect = styled.button<{ loading: boolean }>`
   border-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
+  pointer-events: ${(props) => (props.loading ? "none" : "unset")};
 `;
 
 export const AddButton = styled(PrioritySelect)<{ loading: boolean }>`
@@ -58,6 +59,7 @@ export const AddButton = styled(PrioritySelect)<{ loading: boolean }>`
   background: #eb514e;
   border-color: #eb514e;
   cursor: ${(props) => (props.loading ? "not-allowed" : "unset")};
+  pointer-events: ${(props) => (props.loading ? "none" : "unset")};
 `;
 
 export const ButtonsContainer = styled.div`
