@@ -1,38 +1,42 @@
 import { ThemeProvider } from "@mui/material";
 import React, { FC } from "react";
 import { IntlProvider } from "react-intl";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/header/Navbar/Navbar";
 import Root from "./components/Root";
 import Sidebar from "./components/sidebar/SideBar/Sidebar";
-import English from "./lang/en.json";
-import French from "./lang/fr.json";
+import MESSAGES from "./lang/messages";
+import { langSelector } from "./redux/slices";
 import store from "./redux/store";
 import { Routes } from "./routes";
 import theme from "./theme";
 
-const locale = navigator.language;
-
-let lang = French;
-if (locale === "en-US") {
-  lang = English;
-}
-
-const App: FC = () => (
-  <Provider store={store}>
-    <IntlProvider locale={locale} messages={French}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Navbar />
-          <Sidebar />
-          <Root>
-            <Routes />
-          </Root>
-        </Router>
-      </ThemeProvider>
+const IntlProviderWrapper: FC<any> = ({ children }) => {
+  const lang = useSelector(langSelector);
+  return (
+    <IntlProvider locale={lang} messages={MESSAGES[lang]}>
+      {children}
     </IntlProvider>
-  </Provider>
-);
+  );
+};
+
+const App: FC = () => {
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <IntlProviderWrapper>
+          <Router>
+            <Navbar />
+            <Sidebar />
+            <Root>
+              <Routes />
+            </Root>
+          </Router>
+        </IntlProviderWrapper>
+      </ThemeProvider>
+    </Provider>
+  );
+};
 export default App;

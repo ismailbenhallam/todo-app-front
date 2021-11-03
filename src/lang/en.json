@@ -14,5 +14,8 @@
   "todoList.buttons.delete": "Cancel",
   "todoList.nodata": "No data",
   "history.tabs.done": "Completed",
-  "history.tabs.deleted": "Deleted"
+  "history.tabs.deleted": "Deleted",
+  "language": "Language",
+  "FRENCH": "French",
+  "ENGLISH": "English"
 }

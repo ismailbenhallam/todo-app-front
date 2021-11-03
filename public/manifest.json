@@ -3,23 +3,23 @@
   "name": "Todo App",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logo.webp",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/webp"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#FFFF00",
+  "theme_color": "#EB514E",
   "background_color": "#ffffff"
 }

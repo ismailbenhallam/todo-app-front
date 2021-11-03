@@ -1,12 +1,16 @@
-import LogoutButton from "../LogoutButton/LogoutButton";
+import LanguageChooser from "../LanguageChooser";
 import Logo from "../Logo";
-import { Nav } from "./Navbar.style";
+import LogoutButton from "../LogoutButton/LogoutButton";
+import { Nav, RightContainer } from "./Navbar.style";
 
 export default function Navbar() {
   return (
     <Nav>
       <Logo />
-      <LogoutButton />
+      <RightContainer>
+        <LanguageChooser />
+        <LogoutButton />
+      </RightContainer>
     </Nav>
   );
 }

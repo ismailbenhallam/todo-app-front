@@ -14,5 +14,8 @@
   "todoList.buttons.delete": "Annuler",
   "todoList.nodata": "Aucune donnée",
   "history.tabs.done": "Terminées",
-  "history.tabs.deleted": "Supprimées"
+  "history.tabs.deleted": "Supprimées",
+  "language": "Langue",
+  "FRENCH": "Français",
+  "ENGLISH": "Anglais"
 }
