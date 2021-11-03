@@ -1,10 +1,11 @@
+import { LogoutOutlined } from "@mui/icons-material";
 import { FormattedMessage } from "react-intl";
-import { Button } from "./LogoutButton.style";
+import { ButtonContainer } from "./LogoutButton.style";
 
 export default function LogoutButton() {
   return (
-    <Button>
+    <ButtonContainer variant="outlined" endIcon={<LogoutOutlined />}>
       <FormattedMessage id="buttons.logout" />
-    </Button>
+    </ButtonContainer>
   );
 }

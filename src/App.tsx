@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@mui/material";
 import React, { FC } from "react";
 import { IntlProvider } from "react-intl";
 import { Provider } from "react-redux";
@@ -10,6 +11,7 @@ import English from "./lang/en.json";
 import French from "./lang/fr.json";
 import store from "./redux/store";
 import { Routes } from "./routes";
+import theme from "./theme";
 
 const locale = navigator.language;
 
@@ -20,14 +22,16 @@ if (locale === "en-US") {
 
 const App: FC = () => (
   <Provider store={store}>
-    <IntlProvider locale={locale} messages={English}>
-      <Router>
-        <Navbar />
-        <Sidebar />
-        <Root>
-          <Routes />
-        </Root>
-      </Router>
+    <IntlProvider locale={locale} messages={French}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Navbar />
+          <Sidebar />
+          <Root>
+            <Routes />
+          </Root>
+        </Router>
+      </ThemeProvider>
     </IntlProvider>
   </Provider>
 );

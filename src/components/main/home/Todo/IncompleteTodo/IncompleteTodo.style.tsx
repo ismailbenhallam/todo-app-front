@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import styled from "styled-components";
 
 export const TodoContainer = styled.div`
@@ -25,31 +26,29 @@ export const ColumnDiv = styled.div`
   gap: 10px;
 `;
 
-export const DoneButton = styled.button`
-  width: 85px;
-  max-width: 100%;
-  height: 30px;
-  border-radius: 4px;
-  font-family: "Lato";
-  font-size: 14px;
-  cursor: pointer;
-  font-family: Segoe UI;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  color: white;
-  background: rgb(57, 154, 113);
-  border-color: rgb(57, 154, 113);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+export const DoneButton = styled(Button)`
+  /* width: 85px;
+  max-width: 100%; */
+  /* height: 30px; */
+  /* border-radius: 4px; */
+  /* cursor: pointer; */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+  &.MuiButton-root {
+    /* color: white; */
+    /* border-color: rgb(57, 154, 113);
+    background: rgb(57, 154, 113); */
+    font-family: Segoe UI;
+  }
 `;
 
 export const CancelButton = styled(DoneButton)`
-  background: transparent;
-  border-color: transparent;
-  color: #acb7c1;
-  font-family: Segoe UI;
-  font-size: 14px;
-  line-height: 19px;
-  border-color: none;
-  box-shadow: unset;
+  &.MuiButton-root {
+    color: #acb7c1;
+    background: transparent;
+    border-color: transparent;
+    font-family: Segoe UI;
+    /* line-height: 19px; */
+    /* border-color: none; */
+    box-shadow: unset;
+  }
 `;

@@ -1,6 +1,8 @@
+import { LibraryAddCheckOutlined } from "@mui/icons-material";
+import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import {
   TodoPriorities,
   TodoPriorityNameKeys,
@@ -9,12 +11,12 @@ import {
 import { useCreateTodo } from "../../../../redux/slices";
 import {
   AddButton,
+  AlertDiv,
   ButtonsContainer,
   Container,
-  ErrorDiv,
-  InputText,
+  DescriptionTextArea,
   PrioritySelect,
-  TextArea,
+  TitleTextField,
 } from "./NewTodo.style";
 
 const NewTodo: FC = () => {
@@ -39,49 +41,69 @@ const NewTodo: FC = () => {
     });
   };
 
+  const priorityLabel = intl.formatMessage({
+    id: "newTodo.priority.placeholder",
+  });
+
   return (
     <Container data-testid="form" onSubmit={handleSubmit(onSubmit)}>
-      <InputText
-        loading={loading}
+      <TitleTextField
+        color="secondary"
         data-testid="title"
-        placeholder={intl.formatMessage({ id: "newTodo.title.placeholder" })}
+        label={intl.formatMessage({ id: "newTodo.title.placeholder" }) + "*"}
+        loading={loading}
         {...register("title", {
           required: true,
           disabled: loading,
           validate: (value) => value.trim().length > 0,
         })}
       />
-      <TextArea
+      <DescriptionTextArea
+        {...(register("description"), { disabled: loading })}
+        multiline
+        rows={2}
+        maxRows={4}
         loading={loading}
         data-testid="description"
-        {...(register("description"), { disabled: loading })}
-        placeholder={intl.formatMessage({
+        label={intl.formatMessage({
           id: "newTodo.description.placeholder",
         })}
-        as="textarea"
+        color="secondary"
       />
-      <ErrorDiv data-testid="error" visibility={errors.title}>
-        Veuillez saisir un titre SVP
-      </ErrorDiv>
+      <AlertDiv
+        severity="warning"
+        data-testid="error"
+        visibility={errors.title}>
+        <FormattedMessage id="newTodo.errors.emptyTitle" />
+      </AlertDiv>
       <ButtonsContainer>
-        <PrioritySelect
-          as="select"
-          loading={loading}
-          {...register("priority", { disabled: loading })}>
-          {TodoPriorities.map((p) => (
-            <option key={p} value={p}>
-              {intl.formatMessage({ id: TodoPriorityNameKeys.get(p) })}
-            </option>
-          ))}
-        </PrioritySelect>
+        <FormControl fullWidth>
+          <InputLabel id="new-todo-priority-select" color="secondary">
+            {priorityLabel}
+          </InputLabel>
+          <PrioritySelect
+            labelId="new-todo-priority-select"
+            label={priorityLabel}
+            loading={loading}
+            defaultValue="0"
+            color="secondary"
+            {...register("priority", { disabled: loading })}>
+            {TodoPriorities.map((p) => (
+              <MenuItem key={p} value={p}>
+                {intl.formatMessage({ id: TodoPriorityNameKeys.get(p) })}
+              </MenuItem>
+            ))}
+          </PrioritySelect>
+        </FormControl>
         <AddButton
+          variant="contained"
           loading={loading}
           disabled={loading}
           data-testid="button"
-          as="input"
           type="submit"
-          value={intl.formatMessage({ id: "newTodo.addButton" })}
-        />
+          startIcon={<LibraryAddCheckOutlined />}>
+          <FormattedMessage id="newTodo.addButton" />
+        </AddButton>
       </ButtonsContainer>
     </Container>
   );

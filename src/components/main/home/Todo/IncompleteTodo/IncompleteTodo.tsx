@@ -37,12 +37,16 @@ const IncompleteTodo: FC<{ todo: Todo }> = ({ todo }) => {
       <TodoContent todo={todo} />
       <ColumnDiv>
         <DoneButton
+          variant="contained"
+          color="secondary"
           data-testid="DoneButton"
           data-todo-id={todo.id}
           onClick={handleDoneClick}>
           <FormattedMessage id="todoList.buttons.done" />
         </DoneButton>
         <CancelButton
+          variant="outlined"
+          color="secondary"
           data-testid="CancelButton"
           data-todo-id={todo.id}
           onClick={handleCancelClick}>

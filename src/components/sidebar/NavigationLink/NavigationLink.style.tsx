@@ -5,7 +5,6 @@ export const NavigationLinkContainer = styled(NavLink)`
   height: 48px;
   width: 100%;
   text-decoration: none;
-
   color: #eb514e;
   font-family: Segoe UI;
   font-style: normal;

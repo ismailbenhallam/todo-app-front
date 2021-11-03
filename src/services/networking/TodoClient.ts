@@ -1,7 +1,7 @@
 import Todo from "../../models/Todo";
 import client from "./Client";
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://todoapp-ismailbenhallam.netlify.app";
 class TodoClient {
   allTodos = async (): Promise<Todo[]> => {
     const response = await client.get(BASE_URL + "/todos");

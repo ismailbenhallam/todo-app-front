@@ -4,6 +4,7 @@
   "links.history": "History",
   "newTodo.title.placeholder": "Title",
   "newTodo.description.placeholder": "Description",
+  "newTodo.priority.placeholder": "Priority",
   "newTodo.addButton": "Add",
   "newTodo.errors.emptyTitle": "Please enter a title",
   "todo.priorities.high": "High",

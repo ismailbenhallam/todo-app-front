@@ -19,7 +19,7 @@ let TODOS: Todo[] = [
   },
 ];
 
-export const TODO_BASE_URL = "http://localhost:3000";
+export const TODO_BASE_URL = "https://todoapp-ismailbenhallam.netlify.app";
 
 export const handlers = [
   rest.get(TODO_BASE_URL + "/todos", (req, res, ctx) => {
