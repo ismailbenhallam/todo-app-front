@@ -25,7 +25,7 @@ export const handlers = [
   rest.get(TODO_BASE_URL + "/todos", (req, res, ctx) => {
     return res(
       ctx.status(200),
-      // ctx.delay(1500),
+      ctx.delay(1500),
       ctx.set("Content-Type", "application/json"),
       ctx.json(TODOS)
     );

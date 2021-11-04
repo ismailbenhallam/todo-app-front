@@ -3,55 +3,24 @@ import Todo from "../../models/Todo";
 
 export type TodoState = Readonly<{
   data: Todo[];
-  isLoading: boolean;
-  error: any;
 }>;
 
 const initialState: TodoState = {
   data: [],
-  isLoading: false,
-  error: null,
 };
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    getTodos: (state, action: PayloadAction<void>) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    getTodosSuccess: (state, action: PayloadAction<Todo[]>) => {
+    getTodos: (state, action: PayloadAction<Todo[]>) => {
       state.data = action.payload;
-      state.isLoading = false;
-      state.error = null;
     },
-    getTodosFailure: (state, action: PayloadAction<any>) => {
-      state.error = action.payload;
-      state.isLoading = true;
-    },
-
     createTodo: (state, action: PayloadAction<Todo>) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    createTodoSuccess: (state, action: PayloadAction<Todo>) => {
       state.data.push(action.payload);
-      state.isLoading = false;
-      state.error = null;
-    },
-    createTodoFailure: (state, action: PayloadAction<any>) => {
-      state.error = action.payload;
-      state.isLoading = false;
     },
 
-    completeTodo: (state, action: PayloadAction<number>) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    completeTodoSuccess: (state, action: PayloadAction<Todo>) => {
-      state.isLoading = false;
-      state.error = null;
+    completeTodo: (state, action: PayloadAction<Todo>) => {
       const length = state.data.length;
       for (let i = 0; i < length; i++) {
         if (state.data[i].id === action.payload.id) {
@@ -60,18 +29,7 @@ const todoSlice = createSlice({
         }
       }
     },
-    completeTodoFailure: (state, action: PayloadAction<any>) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-
-    deleteTodo: (state, action: PayloadAction<number>) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    deleteTodoSuccess: (state, action: PayloadAction<Todo>) => {
-      state.isLoading = false;
-      state.error = null;
+    deleteTodo: (state, action: PayloadAction<Todo>) => {
       const length = state.data.length;
       for (let i = 0; i < length; i++) {
         if (state.data[i].id === action.payload.id) {
@@ -79,26 +37,10 @@ const todoSlice = createSlice({
           break;
         }
       }
-    },
-    deleteTodoFailure: (state, action: PayloadAction<any>) => {
-      state.isLoading = false;
-      state.error = action.payload;
     },
   },
 });
 
-export const {
-  getTodos,
-  getTodosSuccess,
-  getTodosFailure,
-  createTodo,
-  createTodoFailure,
-  createTodoSuccess,
-  completeTodo,
-  completeTodoFailure,
-  completeTodoSuccess,
-  deleteTodo,
-  deleteTodoFailure,
-  deleteTodoSuccess,
-} = todoSlice.actions;
+export const { getTodos, createTodo, completeTodo, deleteTodo } =
+  todoSlice.actions;
 export default todoSlice.reducer;
