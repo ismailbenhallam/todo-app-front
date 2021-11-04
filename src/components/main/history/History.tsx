@@ -1,6 +1,6 @@
+import { TodoState } from "models/Todo";
 import { FC, MouseEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { TodoState } from "../../../models/Todo";
 import CompleteTodo from "../home/Todo/CompleteTodo";
 import TodoList from "../home/TodoList";
 import { HistoryContainer, Tab, Tabs } from "./History.style";

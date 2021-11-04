@@ -1,6 +1,6 @@
+import Todo, { TodoPriority, TodoState } from "models/Todo";
+import { cleanup, render } from "utils/test-utils";
 import CompleteTodo from ".";
-import Todo, { TodoPriority, TodoState } from "../../../../../models/Todo";
-import { cleanup, render } from "../../../../../utils/test-utils";
 
 afterEach(cleanup);
 

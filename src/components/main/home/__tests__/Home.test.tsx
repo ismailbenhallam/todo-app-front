@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import { AllProviders } from "../../../../utils/test-utils";
+import { AllProviders } from "utils/test-utils";
 import Home from "../Home";
 
 test("Home should match snapshot", () => {

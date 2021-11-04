@@ -1,14 +1,10 @@
 import { LibraryAddCheckOutlined } from "@mui/icons-material";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
+import { TodoPriorities, TodoPriorityNameKeys, TodoState } from "models/Todo";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import {
-  TodoPriorities,
-  TodoPriorityNameKeys,
-  TodoState,
-} from "../../../../models/Todo";
-import { useCreateTodo } from "../../../../redux/slices";
+import { useCreateTodo } from "redux/slices";
 import {
   AddButton,
   AlertDiv,

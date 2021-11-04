@@ -1,4 +1,4 @@
-import Todo from "../models/Todo";
+import Todo from "models/Todo";
 
 const TODOS_STORAGE_KEY = "todos__storage";
 export default class TodoStorage {

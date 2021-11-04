@@ -1,6 +1,6 @@
+import { default as todoClient } from "services/networking/TodoClient";
+import { cleanup, render } from "utils/test-utils";
 import TodoList from ".";
-import { TodoClient } from "../../../../services/networking/TodoClient";
-import { cleanup, render } from "../../../../utils/test-utils";
 import CompleteTodo from "../Todo/CompleteTodo";
 
 afterEach(cleanup);
@@ -16,7 +16,7 @@ test("TodoList renders No Data", () => {
 });
 
 test("TodoList", async () => {
-  const todos = await new TodoClient().allTodos();
+  const todos = await todoClient.allTodos();
   let component = render(
     <TodoList todoComponent={CompleteTodo} filterFunction={(todo) => true} />
   );

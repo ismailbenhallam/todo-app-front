@@ -1,7 +1,7 @@
+import Todo from "models/Todo";
 import { FC, MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
-import Todo from "../../../../../models/Todo";
-import { useCompleteTodo, useDeleteTodo } from "../../../../../redux/slices";
+import { useCompleteTodo, useDeleteTodo } from "redux/slices";
 import TodoContent from "../TodoContent/TodoContent";
 import {
   CancelButton,

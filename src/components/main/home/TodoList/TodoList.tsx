@@ -1,8 +1,8 @@
+import Todo from "models/Todo";
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
-import Todo from "../../../../models/Todo";
-import { getTodosSelector, useFetchTodos } from "../../../../redux/slices";
+import { getTodosSelector, useFetchTodos } from "redux/slices";
 import {
   EmptyTodoListContainer,
   ErrorDiv,

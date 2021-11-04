@@ -1,6 +1,6 @@
+import History from "components/main/history/History";
+import Home from "components/main/home/Home";
 import { Route, Switch } from "react-router";
-import History from "./components/main/history/History";
-import Home from "./components/main/home/Home";
 
 export const PATHS: { [key: string]: { name: string; path: string } } = {
   home: { name: "Accueil", path: "/" },

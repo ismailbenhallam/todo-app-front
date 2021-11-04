@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import Todo from "../../models/Todo";
+import Todo from "models/Todo";
 
 // const createTodo = (todo: Todo) => {
 //   return {

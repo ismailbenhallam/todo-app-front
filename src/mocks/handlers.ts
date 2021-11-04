@@ -1,5 +1,5 @@
+import Todo, { TodoPriority, TodoState } from "models/Todo";
 import { rest } from "msw";
-import Todo, { TodoPriority, TodoState } from "../models/Todo";
 
 let TODOS: Todo[] = [
   {

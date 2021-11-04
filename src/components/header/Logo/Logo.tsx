@@ -1,6 +1,6 @@
+import logo from "logo.webp";
 import { FC } from "react";
 import styled from "styled-components";
-import logo from "../../../logo.webp";
 
 const LogoContainer = styled.img`
   height: 100%;

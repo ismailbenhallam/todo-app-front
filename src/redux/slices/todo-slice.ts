@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Todo from "../../models/Todo";
+import Todo from "models/Todo";
 
 export type TodoState = Readonly<{
   data: Todo[];

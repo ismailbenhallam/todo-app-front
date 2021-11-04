@@ -1,6 +1,6 @@
+import Todo from "models/Todo";
 import { FC } from "react";
 import { FormattedDate } from "react-intl";
-import Todo from "../../../../../models/Todo";
 import TodoContent from "../TodoContent/TodoContent";
 import { DateContainer, TodoContainer } from "./CompleteTodo.style";
 

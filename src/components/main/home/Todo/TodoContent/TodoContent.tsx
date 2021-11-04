@@ -1,6 +1,6 @@
+import Todo, { TodoPriorityNameKeys } from "models/Todo";
 import { FC } from "react";
 import { FormattedMessage } from "react-intl";
-import Todo, { TodoPriorityNameKeys } from "../../../../../models/Todo";
 import {
   DescriptionDiv,
   PriorityAndTitleDiv,

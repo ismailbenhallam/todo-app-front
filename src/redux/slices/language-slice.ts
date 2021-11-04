@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LOCALES } from "../../lang/locales";
+import { LOCALES } from "lang/locales";
 
 export type LangState = Readonly<{
   value: string;

@@ -1,5 +1,5 @@
+import { TodoPriority } from "models/Todo";
 import styled from "styled-components";
-import { TodoPriority } from "../../../../../models/Todo";
 
 const priorityColors = new Map<TodoPriority, string>();
 priorityColors.set(TodoPriority.HIGH, "rgba(235, 81, 78)");

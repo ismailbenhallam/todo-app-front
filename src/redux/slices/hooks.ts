@@ -1,7 +1,7 @@
+import Todo from "models/Todo";
 import { useDispatch } from "react-redux";
 import { useAsync } from "react-use";
-import Todo from "../../models/Todo";
-import todoClient from "../../services/networking/TodoClient";
+import todoClient from "services/networking/TodoClient";
 import { useTypedAsyncFn } from "../useTypedAsyncFn";
 import { completeTodo, createTodo, deleteTodo, getTodos } from "./todo-slice";
 

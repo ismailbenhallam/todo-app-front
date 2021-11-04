@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import { PATHS } from "../../../routes";
+import { PATHS } from "routes";
 import NavigationLink from "../NavigationLink/NavigationLink";
 import { SidebarContainer } from "./Sidebar.style";
 

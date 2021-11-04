@@ -1,10 +1,5 @@
+import { cleanup, fireEvent, render, waitFor } from "utils/test-utils";
 import NewTodo from ".";
-import {
-  cleanup,
-  fireEvent,
-  render,
-  waitFor,
-} from "../../../../utils/test-utils";
 
 let component, title, description, error, button;
 

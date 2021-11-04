@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import Todo from "models/Todo";
 import { Middleware } from "redux";
-import Todo from "../../models/Todo";
 
 const persisteWithTodoClientMiddleware: Middleware =
   (storeAPI) =>

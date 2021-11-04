@@ -1,5 +1,5 @@
+import { TodoState } from "models/Todo";
 import { FC } from "react";
-import { TodoState } from "../../../models/Todo";
 import NewTodo from "./NewTodo/NewTodo";
 import IncompleteTodo from "./Todo/IncompleteTodo";
 import TodoList from "./TodoList/TodoList";

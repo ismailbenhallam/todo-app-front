@@ -1,4 +1,4 @@
-import Todo from "../../models/Todo";
+import Todo from "models/Todo";
 import client from "./Client";
 
 export const BASE_URL = "https://todoapp-ismailbenhallam.netlify.app";

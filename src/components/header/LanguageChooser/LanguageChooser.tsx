@@ -1,8 +1,8 @@
 import { Container, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { LOCALES } from "lang/locales";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
-import { LOCALES } from "../../../lang/locales";
-import { changeLang, langSelector } from "../../../redux/slices";
+import { changeLang, langSelector } from "redux/slices";
 
 const LanguageChooser = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { createReducer, PayloadAction } from "@reduxjs/toolkit";
+import Todo, { TodoState } from "models/Todo";
 import { Reducer } from "redux";
-import Todo, { TodoState } from "../../models/Todo";
 import {
   completeTodoAction,
   createTodoAction,
