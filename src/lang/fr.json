@@ -1,21 +1,41 @@
 {
   "buttons.logout": "Déconnexion",
-  "links.home": "Accueil",
-  "links.history": "Historique",
-  "newTodo.title.placeholder": "Titre",
-  "newTodo.description.placeholder": "Description",
-  "newTodo.priority.placeholder": "Priorité",
-  "newTodo.addButton": "Ajouter",
-  "newTodo.errors.emptyTitle": "Veuillez saisir un titre",
-  "newTodo.errors.minLength": "Le titre doit contenit au moins {value} caractères",
-  "todo.priorities.high": "Importante",
-  "todo.priorities.normal": "Normale",
-  "todo.priorities.low": "Faible",
-  "todoList.buttons.done": "Terminé",
-  "todoList.buttons.delete": "Annuler",
-  "todoList.nodata": "Aucune donnée",
-  "history.tabs.done": "Terminées",
-  "history.tabs.deleted": "Supprimées",
+  "links": {
+    "home": "Accueil",
+    "history": "Historique"
+  },
+  "newTodo": {
+    "placeholder": {
+      "title": "Titre",
+      "description": "Description",
+      "priority": "Priorité"
+    },
+    "addButton": "Ajouter",
+    "errors": {
+      "emptyTitle": "Veuillez saisir un titre",
+      "minLength": "Le titre doit contenit au moins {value} caractères"
+    }
+  },
+  "todo": {
+    "priorities": {
+      "high": "Importante",
+      "normal": "Normale",
+      "low": "Faible"
+    }
+  },
+  "todoList": {
+    "buttons": {
+      "done": "Terminé",
+      "delete": "Annuler"
+    },
+    "nodata": "Aucune donnée"
+  },
+  "history": {
+    "tabs": {
+      "done": "Terminées",
+      "deleted": "Supprimées"
+    }
+  },
   "language": "Langue",
   "FRENCH": "Français",
   "ENGLISH": "Anglais"

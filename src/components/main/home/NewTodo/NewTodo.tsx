@@ -60,7 +60,7 @@ const NewTodo: FC = () => {
   };
 
   const priorityLabel = intl.formatMessage({
-    id: "newTodo.priority.placeholder",
+    id: "newTodo.placeholder.priority",
   });
 
   return (
@@ -68,7 +68,7 @@ const NewTodo: FC = () => {
       <TitleTextField
         color="secondary"
         data-testid="title"
-        label={intl.formatMessage({ id: "newTodo.title.placeholder" })}
+        label={intl.formatMessage({ id: "newTodo.placeholder.title" })}
         loading={loading}
         disabled={loading}
         error={!!errors.title}
@@ -85,7 +85,7 @@ const NewTodo: FC = () => {
         disabled={loading}
         data-testid="description"
         label={intl.formatMessage({
-          id: "newTodo.description.placeholder",
+          id: "newTodo.placeholder.description",
         })}
         color="secondary"
       />
