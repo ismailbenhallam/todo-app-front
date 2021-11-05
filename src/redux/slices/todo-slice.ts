@@ -19,7 +19,6 @@ const todoSlice = createSlice({
     createTodo: (state, action: PayloadAction<Todo>) => {
       state.data.push(action.payload);
     },
-
     completeTodo: (state, action: PayloadAction<Todo>) => {
       const length = state.data.length;
       for (let i = 0; i < length; i++) {

@@ -7,6 +7,7 @@
   "newTodo.priority.placeholder": "Priority",
   "newTodo.addButton": "Add",
   "newTodo.errors.emptyTitle": "Please enter a title",
+  "newTodo.errors.minLength": "The title must contain at least {value} characters",
   "todo.priorities.high": "High",
   "todo.priorities.normal": "Normal",
   "todo.priorities.low": "Low",
